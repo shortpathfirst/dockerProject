@@ -1,0 +1,36 @@
+<app-search></app-search>
+<ul>
+    <li *ngFor='let pizza of pizzes'>
+        <a>
+            <img src="{{pizza.imageUrl}}" alt="" class="Image">
+            <div class="content">
+                <div class="name">
+                    {{pizza.name}}
+                </div>
+                <span class="favorite {{pizza.favorite?'':'not'}}">
+                ❤
+                </span>
+                <div class="stars">
+                    <star-rating [stars]="pizza.stars"></star-rating>
+                </div>
+                <!-- <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating> -->
+                <div class="product-item-footer">
+                    <div class="origins">
+                        <span *ngFor="let origin of pizza.origins">
+                            {{origin}}
+                        </span>
+                    </div>
+                    <div class="cook-time">
+                        <span>⏳</span>
+                        {{pizza.cookTime}}
+                    </div>
+                </div>
+                <div class="price">
+                    <span>
+                        {{pizza.price|currency}}
+                    </span>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
