@@ -1,0 +1,9 @@
+<div *ngIf="tags"> 
+
+    <a *ngFor="let tag of tags;" routerLink="/tag/{{tag.name}}">
+        {{tag.name}}({{tag.count}})
+    </a>
+  
+     <!-- mostra Tag(4) routerLink è angular per cambiare route-->
+   
+</div>

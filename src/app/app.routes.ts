@@ -6,11 +6,11 @@ import { HomeComponent } from './home/home.component';
 // import { NgModule } from '@angular/core';
 export const routes: Routes = [
 
-    
     //{path:'',component:HeaderComponent},
     {path:'', component:HomeComponent},
-    {path:'search/:searchTerm',component:HomeComponent}
-    
+    {path:'search/:searchTerm',component:HomeComponent},
+    {path:'tag/:tag',component:HomeComponent}
+
     ];
 
 // @NgModule({

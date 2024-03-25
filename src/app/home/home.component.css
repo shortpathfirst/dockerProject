@@ -45,6 +45,9 @@ li a:hover{
 .favorite.not{
     color:gray
 }
+.favorite:hover{
+    color:red;
+}
 .stars{
     margin-bottom: .2rem;
 }

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter } from '@angular/core';
 import { Input,Output } from '@angular/core';
+import { HostListener } from '@angular/core';
 @Component({
   selector: 'star-rating',
   standalone: true,
@@ -15,11 +16,12 @@ export class StarratingComponent {
   @Input()
   size:number =2;
 
- @Input() SelectedStar=0;
-  previousSelection=0;
-  // @Output() //send to the parent component 
-  // onRating:EventEmitter<number> = new EventEmitter<number>();
-  
+  inputSelection=0;
+  mouseEnterSelection = 0;
+ 
+  @Output() onRating = new EventEmitter<number>();
+
+
   get styles(){
     return{
       'width.rem': this.size,
@@ -37,26 +39,21 @@ export class StarratingComponent {
     :'star-empty';
     
     return `assets/stars/${imageName}.svg`
-
   }
-//   HandleMouseEnter(index:number){
-//     this.SelectedStar=index+1;
-//     this.getStarImage(index);
-    
-//   }
-//   HandleMouseLeave(){
-//     if(this.previousSelection !== 0){
-//       this.SelectedStar = this.previousSelection;
-//     }else{
-//       this.SelectedStar=0;
-//     }
-//     this.getStarImage(this.previousSelection);
-//   }
-//   Rating(index:number){
-//     this.SelectedStar = index +1;
-//     this.previousSelection = this.SelectedStar;
-//     this.onRating.emit(this.SelectedStar+1);
-//     this.getStarImage(this.SelectedStar); 
-//     //cambio valore di rating in pizze
-//   }
+  
+  HandleMouseEnter(index:number){
+    this.inputSelection= this.stars;
+    this.mouseEnterSelection = index;
+    this.stars = index;
+    new MouseEvent("mousemove").clientX;
+  }
+  HandleMouseLeave(){
+    this.stars = this.inputSelection;//Ritorna al input
+  }
+  Rating(index:number){
+    this.inputSelection = index;
+    this.stars = this.inputSelection;
+    this.onRating.emit(index); //Emit al componente padre per cambiare il valore
+  }
+
  }
