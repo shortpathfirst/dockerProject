@@ -1,0 +1,34 @@
+<not-found [visible]="!piz" notFoundMessage="Product Not Found!" resetLinkText="Back to Homepage"></not-found>
+<div *ngIf="piz" class="container">
+<img [src]="piz.imageUrl" [alt]="piz.name">
+
+<div class="details">
+    <div class="header">
+        <span class="name">
+            {{piz.name}}
+        </span>
+        <span class="favorite {{piz.favorite?'':'not'}}">
+            ❤ 
+        </span>
+    </div>
+    <div class="rating">
+        <star-rating [stars]="4"></star-rating>
+    </div>
+    <div class="origins">
+        <span *ngFor="let origin of piz.origins">
+        {{origin}}
+        </span>
+    </div>
+    <div class="tags">
+        <app-tags [pizzaPageTags]="piz.tags" justifyContent="start"></app-tags>
+    </div>
+    <div class="cook-time">
+        <span>Time to cook about <strong>{{piz.cookTime}}</strong> minutes</span>
+    </div>
+    <div class="price">
+        <span>{{piz.price|currency}}</span>
+    </div>
+    <button (click)="addToCart()">Add to cart</button>
+</div>
+
+</div>

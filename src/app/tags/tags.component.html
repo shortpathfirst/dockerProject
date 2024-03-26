@@ -1,7 +1,15 @@
-<div *ngIf="tags"> 
+<div *ngIf="tags" [style.justifyContent]="justifyContent"> 
 
     <a *ngFor="let tag of tags;" routerLink="/tag/{{tag.name}}">
         {{tag.name}}({{tag.count}})
+    </a>
+  
+     <!-- mostra Tag(4) routerLink è angular per cambiare route-->
+</div>
+<div *ngIf="pizzaPageTags" [style.justifyContent]="justifyContent"> 
+
+    <a *ngFor="let tagName of pizzaPageTags;" routerLink="/tag/{{tagName}}">
+        {{tagName}}
     </a>
   
      <!-- mostra Tag(4) routerLink è angular per cambiare route-->

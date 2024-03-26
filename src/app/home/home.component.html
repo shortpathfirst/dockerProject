@@ -1,8 +1,9 @@
 <app-search></app-search>
 <app-tags></app-tags>
+<not-found [visible]="!pizzes || pizzes.length <=0" resetLinkText="Reset Search"></not-found>
 <ul>
     <li *ngFor='let pizza of pizzes'>
-        <a>
+        <a routerLink="/pizza/{{pizza.id}}">
             <img src="{{pizza.imageUrl}}" alt="" class="Image">
             <div class="content">
                 <div class="name">

@@ -50,6 +50,7 @@ export class StarratingComponent {
   HandleMouseLeave(){
     this.stars = this.inputSelection;//Ritorna al input
   }
+
   Rating(index:number){
     this.inputSelection = index;
     this.stars = this.inputSelection;
