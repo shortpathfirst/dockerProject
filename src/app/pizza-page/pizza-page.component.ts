@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import { Pizze } from '../ServiceComponentShare/models/pizze';
+import { Pizze } from '../ServiceComponentShare/models/Pizze';
 import { PizzaService } from '../services/pizze/pizza.service';
 import { StarratingComponent } from '../starrating/starrating.component';
 import { TagsComponent } from '../tags/tags.component';

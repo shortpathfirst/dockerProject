@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../../ServiceComponentShare/models/Cart';
-import { Pizze } from '../../ServiceComponentShare/models/pizze';
+import { Pizze } from '../../ServiceComponentShare/models/Pizze';
 import { CartItem } from '../../ServiceComponentShare/models/CartItem';
 
 @Injectable({

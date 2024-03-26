@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { PizzaService } from '../services/pizze/pizza.service';
 import { CommonModule } from '@angular/common';
-import { Pizze } from '../ServiceComponentShare/models/pizze';
+import { Pizze } from '../ServiceComponentShare/models/Pizze';
 import { StarratingComponent } from '../starrating/starrating.component';
 import { ActivatedRoute} from '@angular/router';
 import { SearchComponent } from '../search/search.component';

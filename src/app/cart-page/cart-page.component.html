@@ -23,7 +23,7 @@ resetLinkText="Go To Homepage"
             </select>
         </div>
         <div>
-            {{cartItem.Price | currency}}
+            {{cartItem.Price | currency:'EUR':true }}
         </div>
         <div>
             <button class="remove-button" (click) = removeFromCart(cartItem)>
@@ -36,7 +36,9 @@ resetLinkText="Go To Homepage"
 <div class="checkout">
     <div>
         <div class="pizza-count">{{getQuantity()}}</div>
-        <div class="total-price">{{cart.totalPrice}}</div>
+        <div class="total-price">{{cart.totalPrice | currency:'EUR':true}}</div>
     </div>
+    <button class="buy-button">Buy</button>
+    
 </div>
 </div>

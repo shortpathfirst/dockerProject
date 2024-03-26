@@ -16,6 +16,9 @@ export class StarratingComponent {
   @Input()
   size:number =2;
 
+  @Input()
+  fixed:boolean = false;
+
   inputSelection=0;
   mouseEnterSelection = 0;
  
@@ -44,8 +47,8 @@ export class StarratingComponent {
   HandleMouseEnter(index:number){
     this.inputSelection= this.stars;
     this.mouseEnterSelection = index;
-    this.stars = index;
-    new MouseEvent("mousemove").clientX;
+    if(!this.fixed) this.stars = index;
+    //new MouseEvent("mousemove").clientX;
   }
   HandleMouseLeave(){
     this.stars = this.inputSelection;//Ritorna al input
@@ -53,7 +56,7 @@ export class StarratingComponent {
 
   Rating(index:number){
     this.inputSelection = index;
-    this.stars = this.inputSelection;
+    if(!this.fixed) this.stars = this.inputSelection;
     this.onRating.emit(index); //Emit al componente padre per cambiare il valore
   }
 

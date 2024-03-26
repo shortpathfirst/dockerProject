@@ -1,4 +1,4 @@
-import { Pizze } from "./pizze";
+import { Pizze } from "./Pizze";
 export class CartItem{
 
     constructor(pizza:Pizze){

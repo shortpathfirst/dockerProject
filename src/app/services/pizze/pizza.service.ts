@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pizze } from '../../ServiceComponentShare/models/pizze';
+import { Pizze } from '../../ServiceComponentShare/models/Pizze';
 import { Tag } from '../../ServiceComponentShare/models/Tag';
 @Injectable({
   providedIn: 'root'

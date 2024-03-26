@@ -26,7 +26,7 @@
         <span>Time to cook about <strong>{{piz.cookTime}}</strong> minutes</span>
     </div>
     <div class="price">
-        <span>{{piz.price|currency}}</span>
+        <span>{{piz.price | currency:'EUR':true}}</span>
     </div>
     <button (click)="addToCart()">Add to cart</button>
 </div>
