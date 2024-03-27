@@ -30,43 +30,37 @@ export class CartService {
   }
 
   changeQuantity(pizzaID:number, quantity:number){
-    let cartItem = this.cart.items.find(item =>item.pizza.id === pizzaID); //Find the item if item id = pizzaID
+    let cartItem = this.cart.items.find(item =>item.pizza.id === pizzaID);
+     //Find the item if item id = pizzaID
     if(!cartItem) return;
     cartItem.quantity = quantity;
+    cartItem.price = quantity * cartItem.pizza.price;
     this.setCartToLocalStorage();
   }
 
   clearCart(){
     this.cart = new Cart();
-    this.setCartToLocalStorage();
+    this.setCartToLocalStorage(); //TO KEEP DATA PERSISTENT ON REFRESH
   }
 
-  getCart():Cart{ //delete because observable
-    return this.cart;
-  }
-
-  getCartObservable():Observable<Cart>{ //anychange to the cart should be done here not outside so we use observable type
+  getCartObservable():Observable<Cart>{ 
+    //to avoid to change cart by the outside
     return this.cartSubject.asObservable();
   }
 
   private setCartToLocalStorage():void{
     this.cart.totalPrice = this.cart.items
-    .reduce((prevSum,CurrentItem)=>prevSum+CurrentItem.Price,0)
-    //reduce function start to call the method passed based on the number of items , 
-    // initial value 0
+    .reduce((prevSum,CurrentItem)=>prevSum+CurrentItem.price,0)
     this.cart.totalCount = this.cart.items
     .reduce((prevSum,CurrentItem)=>prevSum+CurrentItem.quantity,0)
     
-    
     const cartJson = JSON.stringify(this.cart);
     localStorage.setItem('Cart',cartJson);
-
-    //notify the listener of cart observable
-    this.cartSubject.next(this.cart);
+    this.cartSubject.next(this.cart); // notify observer
   }
   private getCartFromLocalStorage():Cart{
     const cartJson = localStorage.getItem('Cart');
-    //use the same key cart
+    //use the same key cart you SET
     return cartJson? JSON.parse(cartJson):new Cart();
   }
 

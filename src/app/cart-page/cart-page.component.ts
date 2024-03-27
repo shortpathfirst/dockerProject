@@ -18,9 +18,7 @@ export class CartPageComponent implements OnInit {
   cart!:Cart;
 
   constructor(private cartService:CartService){
-    //update the observable
     this.cartService.getCartObservable().subscribe((cart)=>{this.cart = cart;})
-    //this.setCart();
   }
   ngOnInit(): void {
     
@@ -31,16 +29,13 @@ export class CartPageComponent implements OnInit {
   changeQuantity(cartItem:CartItem,quantityString:string){
     const quantity = parseInt(quantityString);
     this.cartService.changeQuantity(cartItem.pizza.id, quantity);
-    this.setCart();
   }
-  setCart(){
-    this.cart = this.cartService.getCart();
-  }
-  getQuantity():number{ //TO REMOVE
-    let quantity:number = 0;
-    for(let number of this.cart.items){
-      quantity+=number.quantity;
-    }
-    return quantity;
-  }
+
+  // getQuantity():number{ //TO REMOVE
+  //   let quantity:number = 0;
+  //   for(let number of this.cart.items){
+  //     quantity+=number.quantity;
+  //   }
+  //   return quantity;
+  // }
 }
