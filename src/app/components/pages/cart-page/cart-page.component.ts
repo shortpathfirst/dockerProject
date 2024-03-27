@@ -1,11 +1,11 @@
 import { Component, Output } from '@angular/core';
-import { Cart } from '../ServiceComponentShare/models/Cart';
-import { CartService } from '../services/cart/cart.service';
+import { Cart } from '../../../ServiceComponentShare/models/Cart';
+import { CartService } from '../../../services/cart/cart.service';
 import { OnInit } from '@angular/core';
-import { CartItem } from '../ServiceComponentShare/models/CartItem';
+import { CartItem } from '../../../ServiceComponentShare/models/CartItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from '../not-found/not-found.component';
+import { NotFoundComponent } from '../../../not-found/not-found.component';
 
 @Component({
   selector: 'app-cart-page',
