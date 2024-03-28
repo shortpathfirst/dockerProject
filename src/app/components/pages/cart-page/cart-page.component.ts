@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { Cart } from '../ServiceComponentShare/models/Cart';
-import { CartService } from '../services/cart/cart.service';
+import { Component, Output } from '@angular/core';
+import { Cart } from '../../../ServiceComponentShare/models/Cart';
+import { CartService } from '../../../services/cart/cart.service';
 import { OnInit } from '@angular/core';
-import { CartItem } from '../ServiceComponentShare/models/CartItem';
+import { CartItem } from '../../../ServiceComponentShare/models/CartItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from '../not-found/not-found.component';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-cart-page',
@@ -18,7 +18,7 @@ export class CartPageComponent implements OnInit {
   cart!:Cart;
 
   constructor(private cartService:CartService){
-    this.setCart();
+    this.cartService.getCartObservable().subscribe((cart)=>{this.cart = cart;})
   }
   ngOnInit(): void {
     
@@ -29,16 +29,13 @@ export class CartPageComponent implements OnInit {
   changeQuantity(cartItem:CartItem,quantityString:string){
     const quantity = parseInt(quantityString);
     this.cartService.changeQuantity(cartItem.pizza.id, quantity);
-    this.setCart();
   }
-  setCart(){
-    this.cart = this.cartService.getCart();
-  }
-  getQuantity():number{
-    let quantity:number = 0;
-    for(let number of this.cart.items){
-      quantity+=number.quantity;
-    }
-    return quantity;
-  }
+
+  // getQuantity():number{ //TO REMOVE
+  //   let quantity:number = 0;
+  //   for(let number of this.cart.items){
+  //     quantity+=number.quantity;
+  //   }
+  //   return quantity;
+  // }
 }

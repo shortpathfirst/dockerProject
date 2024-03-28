@@ -14,19 +14,19 @@ resetLinkText="Go To Homepage"
             </a>
         </div>
         <div>
-            <select [(ngModel)]="cartItem.quantity"
-            #quantitySelect (change) ="changeQuantity(cartItem,quantitySelect.value)">
+            <select #quantitySelect [(ngModel)]="cartItem.quantity" [value]="cartItem.quantity"
+            (change)="changeQuantity(cartItem,quantitySelect.value)">
 
-                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}" >
+                <option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]">
                 {{number}}
                 </option>
             </select>
         </div>
         <div>
-            {{cartItem.Price | currency:'EUR':true }}
+            {{cartItem.price | currency:'EUR':true }}
         </div>
         <div>
-            <button class="remove-button" (click) = removeFromCart(cartItem)>
+            <button class="remove-button" (click)="removeFromCart(cartItem)">
                 Remove
             </button>
         </div>
@@ -35,10 +35,10 @@ resetLinkText="Go To Homepage"
 
 <div class="checkout">
     <div>
-        <div class="pizza-count">{{getQuantity()}}</div>
+        <div class="pizza-count">{{cart.totalCount}}</div>
         <div class="total-price">{{cart.totalPrice | currency:'EUR':true}}</div>
     </div>
-    <button class="buy-button">Buy</button>
+    <button class="buy-button">Proceed to checkout</button>
     
 </div>
 </div>

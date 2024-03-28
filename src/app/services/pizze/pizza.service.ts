@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Pizze } from '../../ServiceComponentShare/models/Pizze';
 import { Tag } from '../../ServiceComponentShare/models/Tag';
+import * as pizzeJSON from '../../pizzainfo.json' ;
+import { NotFoundError } from 'rxjs';
+import { CartItem } from '../../ServiceComponentShare/models/CartItem';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,28 +40,28 @@ export class PizzaService {
     this.getall().filter(pizze => pizze.tags?.includes(tag))
   }
   getall():Pizze[]{
-    //########## TO DO , GET LIST OF FILES OF A DIRECTORY
-    // only work in NODE JS
-    //var fs = require('fs');
-    //var files = fs.readdirSync('/assets/images/pizze/');
-    // const pizze:String[] = ['A legna','bonci','Contemporanea','gourmet','Napoletana','Verace'];
-    // let immagini:String[] = [];
 
-    // for(let pizza of pizze){
-    //   immagini.push('assets/images/pizze/'+pizza+'.jpg')
-    // }
-    //const pizzeInfo = JSON.parse('assets/pizzainfo.json')
-    
-    let Pizza0 = new Pizze(1,'Pizza a legna',10,true,'/assets/images/pizze/A legna.jpg',['italy'],'10-20',4.5,['Crunchy', 'Pizza', 'ALegna']);
-    let Pizza1 = new Pizze(2,'Pizza Bonci',10,false,'/assets/images/pizze/bonci.jpg',['italy'],'10-20',3,['Crunchy','Pizza','Teglia']);
-    let Pizza2 = new Pizze(3,'Pizza Pizza contemporanea',10,true,'/assets/images/pizze/Contemporanea.jpg',['italy'],'10-20',4,['Pizza', 'Gourmet']);
-    let Pizza3 = new Pizze(4,'Pizza Gourmet',20,false,'/assets/images/pizze/gourmet.jpg',['italy','Milan'],'10-20',2.5,['Pizza','Gourmet']);
-    let Pizza4 = new Pizze(5,'Pizza Verace',8,true,'/assets/images/pizze/Verace.jpg',['italy','Napoli'],'10-20',5,['Pizza', 'Classica']);
-    let Pizza5 = new Pizze(6,'Pizza Napoletana',12,false,'/assets/images/pizze/Napoletana.jpg',['italy','Napoli'],'10-20',1,['Classica', 'Pizza']);
-    
-     return [Pizza0,Pizza1,Pizza2,Pizza3,Pizza4,Pizza5];
+    let pizzaArray:Pizze[] = [];
+    let p:Pizze;
+    for (let i = 0; i < pizzeJSON.pizze.length; i++){
+        p= new Pizze(
+          pizzeJSON.pizze[i].id,
+          pizzeJSON.pizze[i].name,
+          pizzeJSON.pizze[i].price,
+          pizzeJSON.pizze[i].favorite,
+          pizzeJSON.pizze[i].imageUrl,
+          pizzeJSON.pizze[i].origins,
+          pizzeJSON.pizze[i].cookTime,
+          pizzeJSON.pizze[i].stars,
+          pizzeJSON.pizze[i].tags
+         );
+      pizzaArray.push(p);
+    }
+
     //Stampa errori immagini non trovate
+  return pizzaArray;
     
   }
+
 
 }

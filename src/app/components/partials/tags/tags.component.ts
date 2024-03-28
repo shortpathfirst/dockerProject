@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Tag } from '../ServiceComponentShare/models/Tag';
+import { Tag } from '../../../ServiceComponentShare/models/Tag';
 import { OnInit } from '@angular/core';
-import { PizzaService } from '../services/pizze/pizza.service';
+import { PizzaService } from '../../../services/pizze/pizza.service';
 import { RouterLink } from '@angular/router';
 import { Input } from '@angular/core';
 @Component({

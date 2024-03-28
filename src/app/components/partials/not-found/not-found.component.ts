@@ -10,7 +10,7 @@ import { Router } from 'express';
   styleUrl: './not-found.component.css'
 })
 export class NotFoundComponent {
-  @Input() visible:boolean = false;
+  @Input() visible:boolean = false; //or ngIf 
   @Input() notFoundMessage:string ="Nothing Found!";
   @Input() resetLinkText:string="Reset";
   @Input() resetLinkRoute:string="/"

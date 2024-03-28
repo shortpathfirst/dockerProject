@@ -1,14 +1,14 @@
 import { Pizze } from "./Pizze";
 export class CartItem{
 
-    constructor(pizza:Pizze){
-        this.pizza = pizza;
-        this.Price; //getter setter ts 
+    constructor(public pizza:Pizze){
+        //this.pizza = pizza; automatic done 
+        this.price; //getter setter ts 
     }
-    pizza:Pizze;
+    // pizza:Pizze;
     quantity:number = 1;
-
-    get Price():number{
-        return this.pizza.price * this.quantity;
-    }
+    price:number = this.pizza.price;    
+    // get Price():number{
+    //     return this.pizza.price * this.quantity;
+    // }
 }
