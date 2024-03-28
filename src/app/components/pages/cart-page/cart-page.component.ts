@@ -5,7 +5,7 @@ import { OnInit } from '@angular/core';
 import { CartItem } from '../../../ServiceComponentShare/models/CartItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from '../../../not-found/not-found.component';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-cart-page',

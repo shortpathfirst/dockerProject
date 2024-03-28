@@ -2,12 +2,12 @@ import { Component,OnInit } from '@angular/core';
 import { PizzaService } from '../../../services/pizze/pizza.service';
 import { CommonModule } from '@angular/common';
 import { Pizze } from '../../../ServiceComponentShare/models/Pizze';
-import { StarratingComponent } from '../../../starrating/starrating.component';
+import { StarratingComponent } from '../../partials/starrating/starrating.component';
 import { ActivatedRoute} from '@angular/router';
 import { SearchComponent } from '../../partials/search/search.component';
 import { TagsComponent } from '../../partials/tags/tags.component';
 import { RouterLink } from '@angular/router';
-import { NotFoundComponent } from '../../../not-found/not-found.component';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 @Component({
   selector: 'app-home',
   standalone: true,

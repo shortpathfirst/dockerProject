@@ -3,10 +3,10 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Pizze } from '../../../ServiceComponentShare/models/Pizze';
 import { PizzaService } from '../../../services/pizze/pizza.service';
-import { StarratingComponent } from '../../../starrating/starrating.component';
+import { StarratingComponent } from '../../partials/starrating/starrating.component';
 import { TagsComponent } from '../../partials/tags/tags.component';
 import { CartService } from '../../../services/cart/cart.service';
-import { NotFoundComponent } from '../../../not-found/not-found.component';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-pizza-page',
