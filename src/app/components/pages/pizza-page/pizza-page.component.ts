@@ -25,7 +25,7 @@ export class PizzaPageComponent implements OnInit {
 
     activatedRoute.params.subscribe((params)=>{
       if(params['id']){
-        this.piz = pizzaService.getPizzaById(params['id']);
+        pizzaService.getPizzaById(params['id']).subscribe(serverPizza =>{this.piz = serverPizza});
       }
     }) // when it change it can be notified in this function
   } 

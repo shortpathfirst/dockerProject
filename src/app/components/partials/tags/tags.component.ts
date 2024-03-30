@@ -25,7 +25,9 @@ export class TagsComponent implements OnInit {
   
   ngOnInit(): void {
     if(!this.pizzaPageTags) //If tag not avaiable print all else it print only tagName 
-    this.tags = this.pizzaService.getAllTags();
+    this.pizzaService.getAllTags().subscribe(serverTags =>{
+      this.tags = serverTags;
+    })
   }
   
 }

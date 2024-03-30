@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Router } from 'express';
+
 @Component({
   selector: 'not-found',
   standalone: true,
