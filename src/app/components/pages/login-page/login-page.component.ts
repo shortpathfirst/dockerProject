@@ -4,12 +4,16 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from '../../../services/user.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-
+import { InputContainerComponent } from '../../login/input-container/input-container.component';
+import { InputValidationComponent } from '../../login/input-validation/input-validation.component';
+import { TextInputComponent } from '../../login/text-input/text-input.component';
+import { DefaultButtonComponent } from '../../login/default-button/default-button.component';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,RouterModule],
+  imports: [CommonModule,ReactiveFormsModule,RouterModule,
+    InputContainerComponent,InputValidationComponent,TextInputComponent,DefaultButtonComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
