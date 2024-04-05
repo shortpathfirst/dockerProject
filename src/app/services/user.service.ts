@@ -3,8 +3,9 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../ServiceComponentShare/models/User';
 import { IUserLogin } from '../ServiceComponentShare/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL } from '../ServiceComponentShare/models/constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../ServiceComponentShare/models/constants/urls';
 import { ToastrService } from 'ngx-toastr';
+import { IUserRegister } from '../ServiceComponentShare/interfaces/IUserRegister';
 
 
 const USER_KEY = 'User';
@@ -49,6 +50,26 @@ login(userLogin:IUserLogin):Observable<User>{
      );  
       
    }
+register(userRegister:IUserRegister):Observable<User>{
+  return this.http.post<User>(USER_REGISTER_URL,userRegister).pipe(
+    tap({
+      next:(user) =>{
+        this.setUserToLocalStorage(user);
+        this.userSubject.next(user);
+        this.toastrService.success(
+          `Welcome to the best Pizza site ${user.name}`,
+          'Register Successful'
+        )
+      },
+      error:(errorResponse) =>{
+        this.toastrService.error(errorResponse.error,
+          'Register Failed')
+      }
+    
+    })
+  )
+}
+
    //To keep the login when refresh LOCALSTORAGE
    private setUserToLocalStorage(user:User){
         localStorage.setItem(USER_KEY,JSON.stringify(user));

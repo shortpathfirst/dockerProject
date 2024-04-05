@@ -10,4 +10,4 @@ export const PIZZE_BY_ID_URL = PIZZE_URL + '/';
 
 
 export const USER_LOGIN_URL = BASE_URL + '/api/users/login';
-
+export const USER_REGISTER_URL = BASE_URL+'/api/users/register';

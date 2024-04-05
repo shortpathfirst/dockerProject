@@ -4,7 +4,9 @@ import { AbstractControl } from '@angular/forms';
 
 const VALIDATOR_MESSAGES:any={
   required:'Should not be empty',
-  email:'Email is not valid'
+  email:'Email is not valid',
+  minlenght:'Field is too short',
+  notMatch:'Password and Confirm does not match'
 }
 
 @Component({
@@ -29,10 +31,10 @@ export class InputValidationComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.control.statusChanges.subscribe(() =>{
       this.checkValidation();
-    })
+    });
     this.control.valueChanges.subscribe(() =>{
       this.checkValidation();
-    })
+    });
   } 
 
   checkValidation(){ //Fill the errorMessage
