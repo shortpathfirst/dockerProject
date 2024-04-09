@@ -6,11 +6,12 @@ import { CartItem } from '../../../ServiceComponentShare/models/CartItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from '../../partials/not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [CommonModule, FormsModule,NotFoundComponent],
+  imports: [CommonModule, FormsModule,NotFoundComponent,RouterModule],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.css'
 })

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../ServiceComponentShare/models/User';
-import { IUserLogin } from '../ServiceComponentShare/interfaces/IUserLogin';
+import { User } from '../../ServiceComponentShare/models/User';
+import { IUserLogin } from '../../ServiceComponentShare/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL, USER_REGISTER_URL } from '../ServiceComponentShare/models/constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../../ServiceComponentShare/models/constants/urls';
 import { ToastrService } from 'ngx-toastr';
-import { IUserRegister } from '../ServiceComponentShare/interfaces/IUserRegister';
+import { IUserRegister } from '../../ServiceComponentShare/interfaces/IUserRegister';
 
 
 const USER_KEY = 'User';
@@ -13,12 +13,17 @@ const USER_KEY = 'User';
   providedIn: 'root'
 })
 export class UserService {
+
   private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   //No one can read or write outside UserService  so we use Observable
   public userObservable:Observable<User>;
   constructor(private http:HttpClient, private toastrService:ToastrService) {
     this.userObservable = this.userSubject.asObservable();
    }
+
+  public get currentUser():User{
+  return this.userSubject.value;
+  }
 ///////////////////////////////
 //npm install ngx-toastr for visual result
 //////////////////////////////////////////
@@ -29,27 +34,24 @@ export class UserService {
 //   "node_modules/ngx-toastr/toastr.css"
 // ],
 ////////////////////////////////////////
-login(userLogin:IUserLogin):Observable<User>{
-       // htttp return an observable
-     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe( //.subscription return a Subscription so we PIPE
+  login(userLogin:IUserLogin):Observable<User>{
+    return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(// we pipe because it return a Subscription 
       tap({
-        next:(user) =>{
+        next: (user) =>{
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
-          
           this.toastrService.success(
-            `Welcome to PizzaStore ${user.name}!`,
+            `Welcome to Foodmine ${user.name}!`,
             'Login Successful'
           )
         },
-        error:(errorResponse)=>{
-          this.toastrService.error(errorResponse.error,'Login Failed');
-
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Login Failed');
         }
       })
-     );  
-      
-   }
+    );
+  }
+
 register(userRegister:IUserRegister):Observable<User>{
   return this.http.post<User>(USER_REGISTER_URL,userRegister).pipe(
     tap({

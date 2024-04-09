@@ -5,6 +5,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { LoadingInterceptor } from './ServiceComponentShare/interceptors/loading.interceptor';
+import { AuthInterceptor } from './ServiceComponentShare/interceptors/auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -16,6 +17,11 @@ export const appConfig: ApplicationConfig = {
         useClass: LoadingInterceptor,
         multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+  },
     provideAnimationsAsync(),
     provideToastr({
       timeOut: 4000,

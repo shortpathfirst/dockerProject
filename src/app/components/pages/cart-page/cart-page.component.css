@@ -105,3 +105,18 @@ ul .remove-button:hover{
     opacity:.9;
     cursor:pointer;
 }
+.checkout a{
+    padding: 1rem;
+    color: white;
+    background:#e72929;
+    display: block;
+    width: 80%;
+    border-radius: 1rem;
+    text-align: center;
+    opacity: 0.7;
+    justify-self: center;
+  }
+.checkout a:hover{
+    opacity: 1;
+    cursor: pointer;
+  }

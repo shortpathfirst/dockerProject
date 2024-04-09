@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services/user/user.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PasswordMatchValidator } from '../../../ServiceComponentShare/validators/password_match_validator';
 import { IUserRegister } from '../../../ServiceComponentShare/interfaces/IUserRegister';

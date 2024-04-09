@@ -3,7 +3,7 @@ import {  RouterLink, RouterOutlet } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { CartService } from '../../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services/user/user.service';
 import { User } from '../../../ServiceComponentShare/models/User';
 
 
@@ -19,8 +19,12 @@ export class HeaderComponent implements OnInit{
   user!:User;
   constructor(cartService:CartService,private userService:UserService){
     
-    cartService.getCartObservable().subscribe((newCart)=>{this.cartQuantity = newCart.totalCount})
-    userService.userObservable.subscribe((newUser)=>{this.user = newUser});
+    cartService.getCartObservable().subscribe((newCart)=>{
+      this.cartQuantity = newCart.totalCount
+    })
+    userService.userObservable.subscribe((newUser)=>{
+      this.user = newUser
+    });
   }
   ngOnInit(): void {
     

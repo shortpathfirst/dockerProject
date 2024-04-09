@@ -47,7 +47,9 @@ export class CartService {
     //to avoid to change cart by the outside
     return this.cartSubject.asObservable();
   }
-
+  getCart():Cart{// To not work with observable when you want only latest value
+    return this.cartSubject.value;
+  }
   private setCartToLocalStorage():void{
     this.cart.totalPrice = this.cart.items
     .reduce((prevSum,CurrentItem)=>prevSum+CurrentItem.price,0)
